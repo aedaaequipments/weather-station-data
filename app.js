@@ -68,7 +68,7 @@ database.ref('VER1').on('child_added', (snapshot) => {
 
 // LED Control
 const ledToggleButton = document.getElementById('led-toggle-button');
-let ledStatus = "OFF";
+let ledStatus = 0;
 
 // Fetch initial LED status
 database.ref('ledStatus').on('value', (snapshot) => {
@@ -78,7 +78,7 @@ database.ref('ledStatus').on('value', (snapshot) => {
 
 // Function to update the LED button text
 function updateLedButton() {
-  if (ledStatus === "ON") {
+  if (ledStatus === 1) {
     ledToggleButton.textContent = "Turn LED OFF";
   } else {
     ledToggleButton.textContent = "Turn LED ON";
@@ -87,7 +87,7 @@ function updateLedButton() {
 
 // Function to toggle LED status
 ledToggleButton.addEventListener('click', () => {
-  ledStatus = (ledStatus === "ON") ? "OFF" : "ON";
+  ledStatus = (ledStatus === 1) ? 0 : 1;
   database.ref('ledStatus').set(ledStatus);
   updateLedButton();
 });
