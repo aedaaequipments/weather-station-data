@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'index.html';
         })
         .catch((error) => {
-          document.getElementById('error-message').textContent = error.message;
+          document.getElementById('error-message').textContent = 'Login Failed';
+          alert('Login Failed');
         });
     });
   }
