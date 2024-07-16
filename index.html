@@ -7,18 +7,34 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script defer src="firebase-init.js"></script>
+  <script defer src="auth.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
   <h1>Weather Station Dashboard</h1>
+  <button id="logout-button" class="logout-button">Logout</button>
   <div id="data-section">
     <div id="dashboard">
       <!-- Display sensor data here -->
     </div>
-    <div id="led-control">
-      <h3>LED Control</h3>
-      <button id="led-toggle-button">Turn LED ON</button>
+    <div id="valve-control">
+      <h3>Valve Control</h3>
+      <button id="motor1-toggle-button" class="control-button">Turn Motor Control 1 ON</button>
+      <button id="motor2-toggle-button" class="control-button">Turn Motor Control 2 ON</button>
+      <button id="motor3-toggle-button" class="control-button">Turn Motor Control 3 ON</button>
+      <button id="motor4-toggle-button" class="control-button">Turn Motor Control 4 ON</button>
+      <button id="motor5-toggle-button" class="control-button">Turn Motor Control 5 ON</button>
     </div>
   </div>
+  <script>
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        // Redirect to login page if not authenticated
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
 </body>
 </html>
