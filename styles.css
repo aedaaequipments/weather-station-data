@@ -186,3 +186,24 @@ h1 {
   100% { transform: rotate(360deg); }
 }
 
+/* Styles for the predicted data table */
+#predicted-data-table-container {
+  margin-top: 40px;
+  overflow-x: auto;
+}
+
+#predicted-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#predicted-data-table th, #predicted-data-table td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+#predicted-data-table th {
+  background-color: #f2f2f2;
+}
