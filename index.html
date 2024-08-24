@@ -3,94 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Station Dashboard</title>
+  <title>Sasya Mitra Vaathavaran</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
   <script defer src="firebase-init.js"></script>
   <script defer src="auth.js"></script>
   <script defer src="app.js"></script>
+  
 </head>
-<body>
-  <h1>Weather Station Dashboard</h1>
+<h1>Sasya Mitra Vaathavaran</h1>
+  <!--<img src="images/logo-no-bg.png" alt="Avatar" class="avatar" >-->
+
   <button id="logout-button" class="logout-button">Logout</button>
-  <div id="data-section">
-    <div id="dashboard">
-      <!-- Display sensor data here -->
-    </div>
-    <div id="valve-control">
-      <h3>Valve Control</h3>
-      <button id="motor1-toggle-button" class="control-button">Turn Motor Control 1 ON</button>
-      <button id="motor2-toggle-button" class="control-button">Turn Motor Control 2 ON</button>
-      <button id="motor3-toggle-button" class="control-button">Turn Motor Control 3 ON</button>
-      <button id="motor4-toggle-button" class="control-button">Turn Motor Control 4 ON</button>
-      <button id="motor5-toggle-button" class="control-button">Turn Motor Control 5 ON</button>
-    </div>
-    <div id="predicted-data-section">
-      <h3>Predicted Data</h3>
-      <table id="predicted-data-table">
-        <thead>
-          <tr>
-            <th>Record</th>
-            <th>Conventional</th>
-            <th>Organic</th>
-            <th>Semi_Organic</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>micro_nutrients_required_with_manual_checklist_based_on_plant_conditions</td>
-            <td id="conventional_1"></td>
-            <td id="organic_1"></td>
-            <td id="semi_organic_1"></td>
-          </tr>
-          <tr>
-            <td>nutrients_requirement_by_stage_of_crop_with_manual_checklist_based_on_plant</td>
-            <td id="conventional_2"></td>
-            <td id="organic_2"></td>
-            <td id="semi_organic_2"></td>
-          </tr>
-          <tr>
-            <td>probable_disease_control</td>
-            <td id="conventional_3"></td>
-            <td id="organic_3"></td>
-            <td id="semi_organic_3"></td>
-          </tr>
-          <tr>
-            <td>probable_disease_prevention</td>
-            <td id="conventional_4"></td>
-            <td id="organic_4"></td>
-            <td id="semi_organic_4"></td>
-          </tr>
-          <tr>
-            <td>probable_pest_control</td>
-            <td id="conventional_5"></td>
-            <td id="organic_5"></td>
-            <td id="semi_organic_5"></td>
-          </tr>
-          <tr>
-            <td>probable_pest_prevention</td>
-            <td id="conventional_6"></td>
-            <td id="organic_6"></td>
-            <td id="semi_organic_6"></td>
-          </tr>
-          <tr>
-            <td>probable_weed_removal_methods_and_tips_tools</td>
-            <td id="conventional_7"></td>
-            <td id="organic_7"></td>
-            <td id="semi_organic_7"></td>
-          </tr>
-            <tr>
-            <td>predicted_timestamp</td>
-            <td id="conventional_7"></td>
-            <td id="organic_7"></td>
-            <td id="semi_organic_7"></td>
-          </tr>
-        </tbody>
-      </table>
+
+  <div id="main-page" class="container">
+    <h2 class="underline-heading">VALVE CONTROLS</h2>
+
+    <div class="container">
+    
+    <!---- <button id="station1-button" class="station-button">Station 1</button>-->
+    <button id="valve1-button" class="station-button" >Valve 1</button>
+  
+    <div id="valve-control" class="section">
+      
+     <!--<button id="motor1-toggle-button" class="control-button">Turn Valve 1 ON</button>-->
+      <button id="valve2-toggle-button" class="control-button">Valve 2</button>
+      <button id="valve3-toggle-button" class="control-button">Valve 3</button>
+      <button id="valve4-toggle-button" class="control-button">Valve 4</button>
+      <button id="valve5-toggle-button" class="control-button">Valve 5</button>
     </div>
   </div>
+  
+  <h2 class="underline-heading">MOTOR DATA</h2>
+  <div id="motor-data" class= "motor-field" >
+    
+    <table id="motor-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Phase 1</th>
+          <th>Phase 2</th>
+          <th>Phase 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><label for="Phase1Voltage" >Voltage:</label></td>
+          <td><input type="text" id="Phase1Voltage" readonly></td>
+          <td><input type="text" id="Phase2Voltage" readonly></td>
+          <td><input type="text" id="Phase3Voltage" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="Phase1Current">Current:</label></td>
+          <td><input type="text" id="Phase1Current" readonly></td>
+          <td><input type="text" id="Phase2Current" readonly></td>
+          <td><input type="text" id="Phase3Current" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="Phase1PowerFactor">Power Factor:</label></td>
+          <td><input type="text" id="Phase1PowerFactor" readonly></td>
+          <td><input type="text" id="Phase2PowerFactor" readonly></td>
+          <td><input type="text" id="Phase3PowerFactor" readonly></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="section">
+      <label for="totalPower">Total Power:</label>
+      <input type="text" id="totalPower" readonly>
+    </div>
+  </div>
+  <button id="motor-on-button" class="control-button">Motor ON</button>
+  <button id="Auto-on-button" class="control-button">Auto ON</button>
+
+        <div id="alert-section" class="alert-section">
+          <h3>Alerts</h3>
+          <marquee id="alert-message" behavior="scroll" direction="left">No alerts at the moment.</marquee>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  
+  <div id="plant1-sensor-dashboard" class="container" style="display: none;">
+    <button id="back-button" class="back-button">Back</button>
+    <div id="valve-control" class="section">
+      <h2>Valve Control</h2>
+      <button id="valve1-toggle-button" class="control-button">Valve1 ON</button>
+    </div>
+    <h2 class="underline-heading">Crop Conditions</h2>
+    <div class="dashboard">
+      <div class="plant-container">
+        <img src="images/plant.png" alt="Plant Image">
+      </div>
+      <div class="sensors">
+        <div class="sensor">
+          <img src="images/light-intensity-icon.png" alt="Light Intensity">
+          <span>Light Intensity</span>
+          <div class="gauge" id="light-intensity-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/humidity-icon.png" alt="Humidity">
+          <span>Humidity</span>
+          <div class="gauge" id="humidity-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/temperature-icon.png" alt="Temperature">
+          <span>Temperature</span>
+          <div class="gauge" id="temperature-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/leaf-wetness-icon.png" alt="Leaf Wetness 1">
+          <span>Leaf Wetness 1</span>
+          <div class="gauge" id="leaf-wetness1-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/leaf-wetness-icon.png" alt="Leaf Wetness 2">
+          <span>Leaf Wetness 2</span>
+          <div class="gauge" id="leaf-wetness2-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/soil-moisture-icon.png" alt="Soil Moisture Top">
+          <span>Soil Moisture Top</span>
+          <div class="gauge" id="soil-moisture1-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/soil-moisture-icon.png" alt="Soil Moisture Middle">
+          <span>Soil Moisture Middle</span>
+          <div class="gauge" id="soil-moisture2-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/temperature-icon.png" alt="Soil Temperature">
+          <span>Soil Temperature</span>
+          <div class="gauge" id="soil-temperature-gauge">Loading...</div>
+        </div>
+        <div class="sensor">
+          <img src="images/soil-moisture-icon.png" alt="Soil Moisture Down">
+          <span>Soil Moisture Bottom</span>
+          <div class="gauge" id="soil-moisture3-gauge">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+  <div id="plant-sensor-dashboard"  class="container" style="display: none;">
+      <div id="predicted-data-section">
+        <h2 class="underline-heading">Predicted Data</h2>
+        <table id="predicted-data-table">
+          <thead>
+            <tr>
+              <th>Record</th>
+              <th>Conventional</th>
+              <th>Organic</th>
+              <th>Semi_Organic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>micro_nutrients_required_with_manual_checklist</td>
+              <td id="conventional_1"></td>
+              <td id="organic_1"></td>
+              <td id="semi_organic_1"></td>
+            </tr>
+            <tr>
+              <td>nutrients_requirement_by_stage_of_crop</td>
+              <td id="conventional_2"></td>
+              <td id="organic_2"></td>
+              <td id="semi_organic_2"></td>
+            </tr>
+            <tr>
+              <td>probable_disease_control</td>
+              <td id="conventional_3"></td>
+              <td id="organic_3"></td>
+              <td id="semi_organic_3"></td>
+            </tr>
+            <tr>
+              <td>probable_disease_prevention</td>
+              <td id="conventional_4"></td>
+              <td id="organic_4"></td>
+              <td id="semi_organic_4"></td>
+            </tr>
+            <tr>
+              <td>probable_pest_control</td>
+              <td id="conventional_5"></td>
+              <td id="organic_5"></td>
+              <td id="semi_organic_5"></td>
+            </tr>
+            <tr>
+              <td>probable_pest_prevention</td>
+              <td id="conventional_6"></td>
+              <td id="organic_6"></td>
+              <td id="semi_organic_6"></td>
+            </tr>
+            <tr>
+              <td>probable_weed_removal_methods_and_tips_tools</td>
+              <td id="conventional_7"></td>
+              <td id="organic_7"></td>
+              <td id="semi_organic_7"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <script>
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
