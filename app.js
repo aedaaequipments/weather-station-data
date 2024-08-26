@@ -271,7 +271,7 @@ database.ref('VER1').on('child_added', (snapshot) => {
 /*-------------------------------------------------Auto log off ---------------------------------------------------------------------- */
 
 // Auto log off when not in use
-let inactivityTime = 10 * 30 * 1000; // 10 minutes in milliseconds
+let inactivityTime = 60 * 60 * 1000; // 60 minutes in milliseconds
 let timer;
 
 function resetTimer() {
