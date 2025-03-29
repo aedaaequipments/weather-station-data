@@ -299,3 +299,29 @@ setupActivityListeners();
 resetTimer(); // Initialize timer when the page loads
 
 /*-------------------------------------------------End---------------------------------------------------------------------- */
+
+// Gate-Valve slider functionality
+const gateValveSlider = document.getElementById('gate-valve');
+const gateValveValue = document.getElementById('gate-valve-value');
+
+// Update display value and Firebase when slider changes
+gateValveSlider.addEventListener('input', (e) => {
+  const value = e.target.value;
+  gateValveValue.textContent = value + '%';
+});
+
+gateValveSlider.addEventListener('change', (e) => {
+  const value = parseInt(e.target.value);
+  // Send 1 to Firebase if value is 100, otherwise send the actual value
+  const firebaseValue = value === 100 ? 1 : value;
+  database.ref('Gate-Valve').set(firebaseValue);
+});
+
+// Listen for Firebase updates to keep slider in sync
+database.ref('Gate-Valve').on('value', (snapshot) => {
+  const value = snapshot.val();
+  // Convert Firebase value back to slider value (1 becomes 100)
+  const sliderValue = value === 1 ? 100 : value;
+  gateValveSlider.value = sliderValue;
+  gateValveValue.textContent = sliderValue + '%';
+});
